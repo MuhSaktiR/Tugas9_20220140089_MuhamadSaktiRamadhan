@@ -1,0 +1,87 @@
+* {
+    padding: 0;
+    margin: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    text-align: justify;
+    font-family: sans-serif;
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; /* Mengatur konten vertikal menjadi di tengah */
+}
+
+section {
+    text-align: center;
+    align-items: center;
+    margin: auto;
+    width: 80%; 
+    padding-bottom: 5px;
+    display: flex; /* Menjadikan section sebagai flex container */
+    flex-direction: column; /* Menjadikan child element berada dalam satu kolom */
+    justify-content: center; /* Memusatkan secara vertikal */
+}
+
+.btn{
+justify-content: center;
+text-align: center;
+}
+
+.Formulir {
+    background-color: #2880b9;
+    color: white;
+    text-decoration: none;
+    width: 100px;
+    height: 40px;
+    margin: 5px;
+    border: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.Formulir, a {
+background-color: #2880b9;
+color: white;
+text-decoration: none;
+width: 100px;
+height: 40px;
+border: transparent;
+border-radius: 5px;
+}
+
+.Formulir:hover {
+    background-color: #1f5f8b;
+}
+
+.Formulir:hover a {
+    color: #fff;
+    background-color: #1f5f8b;
+    text-shadow: 0px 2px 10px rgb(255, 255, 255);
+}
+
+header {
+    background-color: #2880b9;
+    padding: 20px; 
+    text-align: center; 
+}
+
+header h1 {
+    margin: 0; 
+    font-size: 28px; 
+    color: #fff;
+}
+
+footer {
+    background-color: #2880b9;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto; 
+}
+
+footer p {
+    margin: 0; 
+}

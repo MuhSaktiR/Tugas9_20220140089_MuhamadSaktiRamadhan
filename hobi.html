@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hobi Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: lightgray;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .hobi-form {
+        width: 300px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hobi-option {
+      margin-bottom: 10px;
+    }
+
+    label {
+      cursor: pointer;
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    label {
+      display: inline-block;
+      padding: 8px 15px;
+      background-color: #eaeaea;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    input[type="checkbox"]:checked + label {
+      background-color: #8dc63f;
+      color: #fff;
+    }
+
+    label:hover {
+      background-color: #d4d4d4;
+    }
+
+    .back, a {
+    margin-top: 20px;
+    background-color: #2880b9;
+    color: white;
+    text-decoration: none;
+    width: 70px;
+    height: 40px;
+    border: transparent;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    }
+
+    .back:hover a {
+            color: #fff;
+            background-color: #1f5f8b;
+            text-shadow: 0px 2px 10px rgb(255, 255, 255);
+    }
+
+    .back:hover {
+            background-color: #1f5f8b;
+    }
+
+  </style>
+</head>
+<body>
+  <form class="hobi-form">
+    <h2>Hobi Saya</h2>
+    <div class="hobi-option">
+      <input type="checkbox" id="hobi1" name="hobi1">
+      <label for="hobi1">Gaming</label>
+    </div>
+    <div class="hobi-option">
+      <input type="checkbox" id="hobi2" name="hobi2">
+      <label for="hobi2">Olahraga</label>
+    </div>
+    <div class="hobi-option">
+      <input type="checkbox" id="hobi3" name="hobi3">
+      <label for="hobi3">Makan</label>
+    </div>
+    <div class="hobi-option">
+      <input type="checkbox" id="hobi4" name="hobi4">
+      <label for="hobi4">Tidur</label>
+    </div>
+    <button class="back"><a href="index.html">Home</a></button>
+  </form>
+</body>
+</html>

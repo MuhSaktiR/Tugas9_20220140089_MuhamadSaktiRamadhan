@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praktikum 9</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+
+<body>
+    <form>
+        <fieldset>
+            <legend>Formulir Biodata Anda</legend>
+            <p>Nama: <input type="text" name="nama"></p>
+            <p>Alamat: <input type="text" name="alamat"></p>
+            <p>Jenis Kelamin :
+                <input type="radio" name="jk" value="laki-laki" checked/> Laki - Laki
+                <input type="radio" name="jk" value="perempuan" /> Perempuan
+            </p>
+            <p>Bahasa pemrograman yang dikuasai : <br>
+                <input type="checkbox" name="web"> WEB
+                <input type="checkbox" name="mobile"> MOBILE 
+                <input type="checkbox" name="desk"> DESKTOP
+            </p>
+
+            <p>Provinsi asal:
+                <select id="provinsi" onchange="populateKota()">
+                    <option value="">Pilih Provinsi</option>
+                    <option value="Aceh">Aceh</option> <!--Ceklist-->
+                    <option value="Sumatera Utara">Sumatera Utara</option> <!--Ceklist-->
+                    <option value="Sumatera Barat">Sumatera Barat</option> <!--Ceklist-->
+                    <option value="Riau">Riau</option> <!--Ceklist-->
+                    <option value="Jambi">Jambi</option> <!--Ceklist-->
+                    <option value="Sumatera Selatan">Sumatera Selatan</option> <!--Ceklist-->
+                    <option value="Bengkulu">Bengkulu</option> <!--Ceklist-->
+                    <option value="Lampung">Lampung</option> <!--Ceklist-->
+                    <option value="Kepulauan Riau">Kepulauan Riau</option> <!--Ceklist-->
+                    <option value="Kepulauan Bangka Belitung">Kepulauan Bangka Belitung</option> <!--Ceklist-->
+                    <option value="DKI Jakarta">DKI Jakarta</option> <!--Ceklist-->
+                    <option value="Jawa Barat">Jawa Barat</option> <!--Ceklist-->
+                    <option value="Jawa Tengah">Jawa Tengah</option> <!--Ceklist-->
+                    <option value="DI Yogyakarta">DI Yogyakarta</option>
+                    <option value="Jawa Timur">Jawa Timur</option>
+                    <option value="Banten">Banten</option>
+                    <option value="Bali">Bali</option>
+                    <option value="Nusa Tenggara Barat">Nusa Tenggara Barat</option>
+                    <option value="Nusa Tenggara Timur">Nusa Tenggara Timur</option>
+                    <option value="Kalimantan Barat">Kalimantan Barat</option>
+                    <option value="Kalimantan Tengah">Kalimantan Tengah</option>
+                    <option value="Kalimantan Selatan">Kalimantan Selatan</option>
+                    <option value="Kalimantan Timur">Kalimantan Timur</option>
+                    <option value="Sulawesi Utara">Sulawesi Utara</option>
+                    <option value="Sulawesi Tengah">Sulawesi Tengah</option>
+                    <option value="Sulawesi Selatan">Sulawesi Selatan</option>
+                    <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
+                    <option value="Gorontalo">Gorontalo</option>
+                    <option value="Sulawesi Barat">Sulawesi Barat</option>
+                    <option value="Maluku">Maluku</option>
+                    <option value="Maluku Utara">Maluku Utara</option>
+                    <option value="Papua">Papua</option>
+                    <option value="Papua Barat">Papua Barat</option>
+                    <option value="Papua Selatan">Papua Selatan</option>
+                    <option value="Papua Tengah">Papua Tengah</option>
+                    <option value="Papua Pegunungan">Papua Pegunungan</option>
+                    <option value="Papua Barat Daya">Papua Barat Daya</option>
+                </select>
+            </p>
+
+            <p id="kotaContainer" style="display:none;">Kota asal:
+                <select id="kota">
+                </select>
+            </p>
+
+            <!-- Formulir Tentang Saya -->
+            <legend>Formulir Tentang Anda</legend>
+            <p>Apa yang Membuat Kami harus memilih Anda?:<br>
+                <textarea rows='5' cols='60' placeholder="Tulis jawaban Anda di sini" ></textarea>
+            </p>
+
+            <!-- Formulir Hobi -->
+            <legend>Formulir Hobi Anda</legend>
+            <p>Pilih hobi Anda:</p>
+            <input type="checkbox" name="hobi" value="Gaming"> Gaming<br>
+            <input type="checkbox" name="hobi" value="Olahraga"> Olahraga<br>
+            <input type="checkbox" name="hobi" value="Makan"> Makan<br>
+            <input type="checkbox" name="hobi" value="Tidur"> Tidur<br>
+
+            <!-- Tombol Submit -->
+            <p><input type="submit" value="Submit"></p>
+        </fieldset>
+    </form>
+    <div class="btn">
+        <button class="back"><a href="index.html">Home</a></button>
+    </div>
+
+    <script>
+        function populateKota() {
+            var provinsi = document.getElementById("provinsi");
+            var kotaContainer = document.getElementById("kotaContainer");
+            var kota = document.getElementById("kota");
+
+            // Hapus semua opsi kota sebelum menambahkan yang baru
+            kota.innerHTML = "";
+
+            // Ambil nilai provinsi yang dipilih
+            var selectedProvinsi = provinsi.value;
+
+            // Jika provinsi yang dipilih tidak kosong
+            if (selectedProvinsi !== "") {
+                // Tampilkan kontainer kota
+                kotaContainer.style.display = "block";
+
+                // Tambahkan opsi kota sesuai dengan provinsi yang dipilih
+                switch (selectedProvinsi) {
+                    case "Aceh":
+                        addKotaOption("Banda Aceh");
+                        addKotaOption("Langsa");
+                        addKotaOption("Sabang");
+                        
+                        break;
+                    case "Sumatera Utara":
+                        addKotaOption("Medan");
+                        addKotaOption("Binjai");
+                        addKotaOption("Pematangsiantar");
+                        
+                        break;
+                    case "Sumatera Barat":
+                        addKotaOption("Padang");
+                        addKotaOption("Bukittinggi");
+                        addKotaOption("Padang Panjang");
+                        
+                        break;
+                    case "Riau":
+                        addKotaOption("Pekanbaru");
+                        addKotaOption("Dumai");
+                        addKotaOption("Bengkalis");
+                        
+                        break;
+                    case "Jambi":
+                        addKotaOption("Jambi");
+                        addKotaOption("Sungai Penuh");
+                        addKotaOption("Sarolangun");
+                        
+                        break;
+                    case "Bengkulu":
+                        addKotaOption("Bengkulu");
+                        addKotaOption("Curup");
+                        addKotaOption("Manna");
+        
+                        break;
+                    case "Lampung":
+                        addKotaOption("Bandar Lampung");
+                        addKotaOption("Metro");
+                        addKotaOption("Kotabumi");
+        
+                        break;
+                    case "Kepulauan Riau":
+                        addKotaOption("Tanjung Pinang");
+                        addKotaOption("Batam");
+                        addKotaOption("Bintan");
+        
+                        break;
+                    case "Kepulauan Bangka Belitung":
+                        addKotaOption("Pangkal Pinang");
+                        addKotaOption("Muntok");
+                        addKotaOption("Toboali");
+        
+                        break;
+                    case "DKI Jakarta":
+                        addKotaOption("Jakarta Pusat");
+                        addKotaOption("Jakarta Utara");
+                        addKotaOption("Jakarta Timur");
+        
+                        break;
+                    case "Jawa Barat":
+                        addKotaOption("Bandung");
+                        addKotaOption("Bogor");
+                        addKotaOption("Cirebon");
+        
+                        break;
+                    case "Jawa Tengah":
+                        addKotaOption("Semarang");
+                        addKotaOption("Surakarta");
+                        addKotaOption("Magelang");
+        
+                        break;
+
+                    case "Sumatera Selatan":
+                        addKotaOption("Palembang");
+                        addKotaOption("Prabumulih");
+                        addKotaOption("Lubuklinggau");
+        
+                        break;
+                    case "DI Yogyakarta":
+                        addKotaOption("Yogyakarta");
+        
+                        break;
+                    case "Jawa Timur":
+                        addKotaOption("Surabaya");
+                        addKotaOption("Malang");
+                        addKotaOption("Batu");
+        
+                        break;
+                    case "Banten":
+                        addKotaOption("Serang");
+                        addKotaOption("Tangerang");
+                        addKotaOption("Cilegon");
+        
+                        break;
+                    case "Bali":
+                        addKotaOption("Denpasar");
+                        addKotaOption("Singaraja");
+                        addKotaOption("Tabanan");
+        
+                        break;
+                    case "Nusa Tenggara Barat":
+                        addKotaOption("Mataram");
+                        addKotaOption("Bima");
+                        addKotaOption("Sumbawa");
+        
+                        break;
+                    case "Nusa Tenggara Timur":
+                        addKotaOption("Kupang");
+                        addKotaOption("Maumere");
+                        addKotaOption("Ende");
+        
+                        break;
+
+                    case "Kalimantan Barat":
+                        addKotaOption("Pontianak");
+                        addKotaOption("Singkawang");
+                        addKotaOption("Ketapang");
+                        break;
+
+                    case "Kalimantan Tengah":
+                        addKotaOption("Palangkaraya");
+                        addKotaOption("Sampit");
+                        addKotaOption("Pangkalan Bun");
+        
+                        break;
+                    case "Kalimantan Selatan":
+                        addKotaOption("Banjarmasin");
+                        addKotaOption("Banjarbaru");
+                        addKotaOption("Martapura");
+        
+                        break;
+                    case "Kalimantan Timur":
+                        addKotaOption("Samarinda");
+                        addKotaOption("Balikpapan");
+                        addKotaOption("Bontang");
+                        
+                        break;
+
+                    case "Sulawesi Utara":
+                        addKotaOption("Manado");
+                        addKotaOption("Bitung");
+                        addKotaOption("Tomohon");
+                        
+                        break;
+
+                    case "Sulawesi Tengah":
+                        addKotaOption("Palu");
+                        addKotaOption("Donggala");
+                        addKotaOption("Poso");
+                        
+                        break;
+
+                    case "Sulawesi Selatan":
+                        addKotaOption("Makassar");
+                        addKotaOption("Palopo");
+                        addKotaOption("Parepare");
+                        
+                        break;
+
+                    case "Sulawesi Tenggara":
+                        addKotaOption("Kendari");
+                        addKotaOption("Baubau");
+                        addKotaOption("Raha");
+                        
+                        break;
+
+                    case "Gorontalo":
+                        addKotaOption("Gorontalo");
+                        addKotaOption("Limboro");
+                        addKotaOption("Tilamuta");
+                        
+                        break;
+
+                    case "Maluku":
+                        addKotaOption("Ambon");
+                        addKotaOption("Tual");
+                        addKotaOption("Ternate");
+                        
+                        break;
+
+                    case "Sulawesi Barat":
+                        addKotaOption("Mamuju");
+                        addKotaOption("Majene");
+                        addKotaOption("Polewali Mandar");
+                        
+                        break;
+
+                    case "Maluku Utara":
+                        addKotaOption("Ternate");
+                        addKotaOption("Sofifi");
+                        addKotaOption("Tidore");
+                        
+                        break;
+
+                    case "Papua Barat":
+                        addKotaOption("Manokwari");
+                        addKotaOption("Sorong");
+                        addKotaOption("Fakfak");
+                        
+                        break;
+
+                    case "Papua Selatan":
+                        addKotaOption("Merauke");
+                        addKotaOption("Timika");
+                        addKotaOption("Nabire");
+                        
+                        break;
+
+                    case "Papua Tengah":
+                        addKotaOption("Jayapura");
+                        addKotaOption("Wamena");
+                        addKotaOption("Sentani");
+                        
+                        break;
+
+                    case "Papua Barat Daya":
+                        addKotaOption("Sorong");
+                        addKotaOption("Kaimana");
+                        addKotaOption("Fakfak");
+                        
+                        break;
+
+                    case "Papua":
+                        addKotaOption("Jayapura");
+                        addKotaOption("Wamena");
+                        addKotaOption("Merauke");
+                        
+                        break;
+
+                    case "Papua Pegunungan":
+                        addKotaOption("Nabire");
+                        addKotaOption("Timika");
+                        addKotaOption("Enarotali");
+                        
+                        break;
+                    
+                    default:
+                        // Jika provinsi yang dipilih tidak memiliki kota yang diatur, sembunyikan kontainer kota
+                        kotaContainer.style.display = "none";
+                        break;
+                }
+            } else {
+                // Jika tidak ada provinsi yang dipilih, sembunyikan kontainer kota
+                kotaContainer.style.display = "none";
+            }
+        }
+
+        function addKotaOption(kotaName) {
+            var kota = document.getElementById("kota");
+            var option = document.createElement("option");
+            option.text = kotaName;
+            kota.add(option);
+        }
+    </script>
+</body>
+</html>
